@@ -15,6 +15,8 @@
 		F2B26FCD2CC000ED00DAA3D3 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B26FCC2CC000ED00DAA3D3 /* DataController.swift */; };
 		F2B26FCF2CC0011A00DAA3D3 /* MenuAppsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B26FCE2CC0011A00DAA3D3 /* MenuAppsView.swift */; };
 		F2B26FD12CC0014300DAA3D3 /* JackpotMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B26FD02CC0014300DAA3D3 /* JackpotMachine.swift */; };
+		F2B26FD32CC0045900DAA3D3 /* PaperScisors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B26FD22CC0045900DAA3D3 /* PaperScisors.swift */; };
+		F2B26FD52CC005F100DAA3D3 /* GuessNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B26FD42CC005F100DAA3D3 /* GuessNumber.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		F2B26FCC2CC000ED00DAA3D3 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		F2B26FCE2CC0011A00DAA3D3 /* MenuAppsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuAppsView.swift; sourceTree = "<group>"; };
 		F2B26FD02CC0014300DAA3D3 /* JackpotMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JackpotMachine.swift; sourceTree = "<group>"; };
+		F2B26FD22CC0045900DAA3D3 /* PaperScisors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperScisors.swift; sourceTree = "<group>"; };
+		F2B26FD42CC005F100DAA3D3 /* GuessNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessNumber.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				F2B26FC82CC000B300DAA3D3 /* MainView.swift */,
 				F2B26FCE2CC0011A00DAA3D3 /* MenuAppsView.swift */,
 				F2B26FD02CC0014300DAA3D3 /* JackpotMachine.swift */,
+				F2B26FD42CC005F100DAA3D3 /* GuessNumber.swift */,
+				F2B26FD22CC0045900DAA3D3 /* PaperScisors.swift */,
 				F2B26FCC2CC000ED00DAA3D3 /* DataController.swift */,
 				F2B26FCA2CC000D400DAA3D3 /* MainViewModel.swift */,
 				F2B26FBE2CBFFFB600DAA3D3 /* Assets.xcassets */,
@@ -151,7 +157,9 @@
 			files = (
 				F2B26FCF2CC0011A00DAA3D3 /* MenuAppsView.swift in Sources */,
 				F2B26FCD2CC000ED00DAA3D3 /* DataController.swift in Sources */,
+				F2B26FD32CC0045900DAA3D3 /* PaperScisors.swift in Sources */,
 				F2B26FC92CC000B300DAA3D3 /* MainView.swift in Sources */,
+				F2B26FD52CC005F100DAA3D3 /* GuessNumber.swift in Sources */,
 				F2B26FBB2CBFFFB400DAA3D3 /* swift_iosApp.swift in Sources */,
 				F2B26FD12CC0014300DAA3D3 /* JackpotMachine.swift in Sources */,
 				F2B26FCB2CC000D400DAA3D3 /* MainViewModel.swift in Sources */,
