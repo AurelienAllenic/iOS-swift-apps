@@ -80,7 +80,7 @@ struct PaperScissors: View {
                 }
             }
             .padding()
-            .background(Color.black.opacity(0.4))
+            .background(Color.black.opacity(0.65))
             .cornerRadius(20)
         }
     }

@@ -46,10 +46,10 @@ struct GuessNumber: View {
                 .foregroundColor(.white)
                 .cornerRadius(10)
                 .disabled(viewModel.gameOver)
-                .font(.title2)
+                .font(.title.weight(.semibold))
                 
                 Text("Chances restantes : \(viewModel.chancesLeft)")
-                    .font(.title)
+                    .font(.title.weight(.semibold))
                     .padding()
                     .foregroundColor(.white)
                 Text(viewModel.feedback)
@@ -73,7 +73,7 @@ struct GuessNumber: View {
                 }
             }
             .padding()
-            .background(Color.black.opacity(0.4))
+            .background(Color.black.opacity(0.65))
             .cornerRadius(20)
         }
         .onAppear {
