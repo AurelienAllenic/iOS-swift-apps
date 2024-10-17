@@ -15,7 +15,7 @@ struct TicTacToeView: View {
                     .font(.largeTitle.weight(.bold))
                     .padding()
                     .foregroundColor(.white)
-                    .background(Color.black.opacity(0.7))
+                    .background(Color.black.opacity(0.9))
                     .cornerRadius(25)
 
                 ForEach(0..<3) { row in
@@ -40,7 +40,7 @@ struct TicTacToeView: View {
                     Text(model.winner != nil ? "\(model.winner!) a gagné!" : "Match nul!")
                         .font(.largeTitle.weight(.bold))
                         .padding()
-                        .background(Color.black.opacity(0.7))
+                        .background(Color.black.opacity(0.9))
                         .foregroundColor(.white)
                         .cornerRadius(15)
 

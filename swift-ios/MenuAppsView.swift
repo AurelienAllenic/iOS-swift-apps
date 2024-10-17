@@ -10,7 +10,7 @@ struct MenuAppsView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .ignoresSafeArea()
-                    .opacity(0.7)
+                    .opacity(0.8)
                 
                 Color.black.opacity(0.4)
                     .ignoresSafeArea()

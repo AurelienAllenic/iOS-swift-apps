@@ -12,7 +12,7 @@ struct MainView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .ignoresSafeArea()
-                    .opacity(0.5)
+                    .opacity(0.7)
                 Color.black.opacity(0.4)
                     .ignoresSafeArea()
                     .overlay(
