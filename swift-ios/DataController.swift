@@ -2,7 +2,7 @@ import Foundation
 
 class DataController {
     static var registeredUsers: [String: String] = [
-        "Jean": "12345",
+        "aurelien": "aurelpassword",
         "Anne": "54321"
     ]
 }

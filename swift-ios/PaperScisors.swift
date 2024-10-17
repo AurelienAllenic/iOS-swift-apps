@@ -1,95 +1,121 @@
 import SwiftUI
 
 struct PaperScissors: View {
-    // Énumération pour les choix possibles
+
     enum Choice: String, CaseIterable {
-        case pierre = "rock"    // Assure-toi que le nom de l'image est "rock"
-        case feuille = "paper"   // Assure-toi que le nom de l'image est "paper"
-        case ciseaux = "scisor" // Assure-toi que le nom de l'image est "scissor"
+        case pierre = "rock"
+        case feuille = "paper"
+        case ciseaux = "scisor"
     }
-    
-    // Variables d'état
+
     @State private var userChoice: Choice?
     @State private var computerChoice: Choice?
     @State private var result: String = ""
-    
-    // Fonction pour déterminer le résultat
+    @State private var victories: Int = 0
+    @State private var defeats: Int = 0
+    @State private var isGamePaused: Bool = false
+
     func determineWinner() {
         guard let userChoice = userChoice, let computerChoice = computerChoice else { return }
         
         if userChoice == computerChoice {
             result = "Égalité !"
         } else if (userChoice == .pierre && computerChoice == .ciseaux) ||
-                    (userChoice == .feuille && computerChoice == .pierre) ||
-                    (userChoice == .ciseaux && computerChoice == .feuille) {
+                  (userChoice == .feuille && computerChoice == .pierre) ||
+                  (userChoice == .ciseaux && computerChoice == .feuille) {
             result = "Tu as gagné !"
+            victories += 1 // Incrémente les victoires
         } else {
-            result = "L'ordinateur a gagné !"
+            result = "Tu as perdu !"
+            defeats += 1 // Incrémente les défaites
         }
+        
+        isGamePaused = true // Met le jeu en pause
     }
     
-    // Fonction pour générer le choix aléatoire de l'ordinateur
     func computerPlay() {
         computerChoice = Choice.allCases.randomElement()
     }
     
-    // Fonction pour réinitialiser le jeu
     func resetGame() {
         userChoice = nil
         computerChoice = nil
         result = ""
+        isGamePaused = false // Réactive le jeu
     }
     
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Pierre, Feuille, Ciseaux")
-                .font(.largeTitle)
-                .padding()
+        ZStack {
+            Image("paperScisors")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .ignoresSafeArea()
+                .opacity(0.6)
 
-            HStack {
-                // Boucle pour créer les boutons avec des images
-                ForEach(Choice.allCases, id: \.self) { choice in
-                    Button(action: {
-                        userChoice = choice
-                        computerPlay()
-                        determineWinner()
-                    }) {
-                        Image(choice.rawValue) // Utilise le nom de l'énumération pour l'image
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 100, height: 100) // Ajuste la taille des images
+            VStack(spacing: 20) {
+                Text("Pierre, Feuille, Ciseaux")
+                    .font(.largeTitle.weight(.semibold))
+                    .padding()
+                    .foregroundColor(.white)
+
+                HStack {
+                    ForEach(Choice.allCases, id: \.self) { choice in
+                        Button(action: {
+                            if !isGamePaused { // Vérifie si le jeu n'est pas en pause
+                                userChoice = choice
+                                computerPlay()
+                                determineWinner()
+                            }
+                        }) {
+                            Image(choice.rawValue)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 110, height: 100)
+                        }
+                        .cornerRadius(10)
+                        .disabled(isGamePaused) // Désactive les boutons si le jeu est en pause
                     }
-                    .background(Color.blue.opacity(0.2))
+                }
+
+                if let userChoice = userChoice, let computerChoice = computerChoice {
+                    VStack {
+                        Text("Ton choix : \(userChoice.rawValue.capitalized)")
+                        Text("Choix de l'ordinateur : \(computerChoice.rawValue.capitalized)")
+                    }
+                    .padding()
+                    .foregroundColor(.white)
+                    .font(.title2.weight(.semibold))
+                }
+
+                Text(result)
+                    .padding()
+                    .foregroundColor(.white)
+                    .font(.largeTitle.weight(.bold))
+                HStack{
+                    Text("Victoires : \(victories)")
+                        .foregroundColor(.white)
+                        .font(.title)
+                        .padding()
+                    Text("Défaites : \(defeats)")
+                        .foregroundColor(.white)
+                        .font(.title)
+                        .padding()
+                }
+                if !result.isEmpty {
+                    Button("Relancer la partie") {
+                        resetGame()
+                    }
+                    .padding()
+                    .background(Color.black)
+                    .foregroundColor(.white)
                     .cornerRadius(10)
+                    .font(.title.weight(.semibold))
                 }
             }
-
-            // Affichage des choix
-            if let userChoice = userChoice, let computerChoice = computerChoice {
-                VStack {
-                    Text("Ton choix : \(userChoice.rawValue.capitalized)")
-                    Text("Choix de l'ordinateur : \(computerChoice.rawValue.capitalized)")
-                }
-                .padding()
-            }
-
-            // Affichage du résultat
-            Text(result)
-                .font(.title)
-                .padding()
-
-            // Bouton pour relancer la partie
-            if !result.isEmpty {
-                Button("Relancer la partie") {
-                    resetGame()
-                }
-                .padding()
-                .background(Color.green)
-                .foregroundColor(.white)
-                .cornerRadius(10)
-            }
+            .padding()
+            .background(Color.black.opacity(0.4))
+            .cornerRadius(20)
         }
-        .padding()
     }
 }
 

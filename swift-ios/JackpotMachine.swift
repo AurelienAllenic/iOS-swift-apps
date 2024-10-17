@@ -9,68 +9,86 @@ struct JackpotMachine: View {
     @State private var isButtonHidden = true
 
     var body: some View {
-        VStack {
-            Text("Jackpot Machine")
-                .font(.largeTitle)
+        ZStack {
+            // Image en fond
+            Image("jackpot")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .ignoresSafeArea()
+                .opacity(0.6) // Ajuste l'opacité si tu veux que l'image soit plus discrète
+
+            // Contenu du jeu
+            VStack {
+                Text("Jackpot Machine")
+                    .font(.largeTitle.weight(.semibold))
+                    .padding()
+                    .foregroundColor(.white)
+
+                Text("Credits: \(credits)")
+                    .font(.headline)
+                    .padding()
+                    .foregroundColor(.white)
+
+                HStack {
+                    ForEach(0..<3, id: \.self) { index in
+                        Text("\(numbers[index])")
+                            .font(.system(size: 60))
+                            .padding()
+                            .frame(width: 80, height: 100)
+                            .background(Color.black)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                            .offset(y: isSpinning ? 20 : 0)
+                            .animation(
+                                isSpinning ? Animation.linear(duration: 0.1)
+                                    .repeatCount(20, autoreverses: true) : .default,
+                                value: isSpinning
+                            )
+                    }
+                }
                 .padding()
-            
-            Text("Credits: \(credits)")
-                .font(.headline)
-                .padding()
-            
-            HStack {
-                ForEach(0..<3, id: \.self) { index in
-                    Text("\(numbers[index])")
-                        .font(.system(size: 60))
+
+                if !isTextHidden {
+                    Text(message)
+                        .font(.headline)
                         .padding()
-                        .frame(width: 80, height: 100)
+                        .foregroundColor(.white)
+                }
+
+                Button(action: {
+                    spinReels()
+                }) {
+                    Text("Test your luck !")
+                        .font(.title)
+                        .padding()
                         .background(Color.black)
                         .foregroundColor(.white)
                         .cornerRadius(10)
-                        .offset(y: isSpinning ? 20 : 0)
-                        .animation(
-                            isSpinning ? Animation.linear(duration: 0.1)
-                                .repeatCount(20, autoreverses: true) : .default,
-                            value: isSpinning
-                        )
-                }
-            }
-            .padding()
-            
-            if !isTextHidden {
-                Text(message)
-                    .font(.headline)
-                    .padding()
-            }
-            
-            Button(action: {
-                spinReels()
-            }) {
-                Text("Test your luck !")
-                    .font(.title)
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-            }
-            .padding()
-            .disabled(isSpinning)  // Désactiver le bouton pendant le spinning
-            
-            if !isButtonHidden {
-                Button(action: {
-                    giveNewCredits()
-                }) {
-                    Text("Ajouter Crédit")
-                        .font(.title)
-                        .padding()
-                        .background(Color.green)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
                 }
                 .padding()
+                .disabled(isSpinning)
+
+                if !isButtonHidden {
+                    Button(action: {
+                        giveNewCredits()
+                    }) {
+                        Text("Ajouter Crédit")
+                            .font(.title)
+                            .padding()
+                            .background(Color.green)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+                    .padding()
+                }
             }
+            .padding()
+            .background(Color.black.opacity(0.4)) // Fond noir avec opacité autour de la VStack
+            .cornerRadius(20) // Coins arrondis pour le rectangle
+
+            // Ajout d'un rectangle en fond avec opacité
+            .padding()
         }
-        .padding()
     }
 
     private func giveNewCredits() {

@@ -26,7 +26,7 @@ struct MainView: View {
                                 .background(.white)
                                 .cornerRadius(3)
                                 .padding(.bottom, 0)
-                                
+                                .autocapitalization(.none)
 
                             SecureField("Password", text: $password)
                                 .frame(width: 246, height: 44)
@@ -52,6 +52,7 @@ struct MainView: View {
                             .font(.title)
                             .foregroundColor(.white)
                             .frame(width: 500, height: 100, alignment: .center)
+                            .background(Color.black.opacity(0.4))
 
                         NavigationLink(destination: MenuAppsView()) {
                             Text("Menu")
