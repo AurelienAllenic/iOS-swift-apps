@@ -23,15 +23,25 @@ struct MainView: View {
                                         .foregroundColor(.white)
                                         .font(.title.weight(.bold))
 
-                                    TextField("Login", text: $login)
+                                    TextField("Login", text: $login, prompt:
+                                    Text("Your name ...")
+                                        .foregroundColor(.black)
+                                        .font(.title3.weight(.thin))
+                                    )
                                         .padding()
                                         .frame(width: 246, height: 44)
                                         .background(.white)
                                         .cornerRadius(3)
                                         .autocapitalization(.none)
                                         .padding(.bottom, 10)
+                                        .italic()
 
-                                    SecureField("Password", text: $password)
+                                    SecureField("Password", text: $password, prompt:
+                                        Text("Your password  ...")
+                                            .foregroundColor(.black)
+                                            .font(.title3.weight(.thin))
+                                            .italic()
+                                        )
                                         .padding()
                                         .frame(width: 246, height: 44)
                                         .background(.white)

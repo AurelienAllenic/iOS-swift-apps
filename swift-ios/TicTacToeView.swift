@@ -28,7 +28,7 @@ struct TicTacToeView: View {
                                     .font(.system(size: 64))
                                     .foregroundColor(self.model.board[row][col] == "X" ? .red : .green)
                                     .frame(width: 100, height: 100)
-                                    .background(Color.black.opacity(0.7))
+                                    .background(Color.black.opacity(0.9))
                                     .cornerRadius(10)
                             }
                             .disabled(model.gameOver || !model.board[row][col].isEmpty)
@@ -38,7 +38,7 @@ struct TicTacToeView: View {
 
                 if model.gameOver {
                     Text(model.winner != nil ? "\(model.winner!) a gagné!" : "Match nul!")
-                        .font(.title)
+                        .font(.largeTitle.weight(.bold))
                         .padding()
                         .background(Color.black.opacity(0.7))
                         .foregroundColor(.white)
