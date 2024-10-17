@@ -3,9 +3,9 @@ import SwiftUI
 
 class PaperScissorsViewModel: ObservableObject {
     enum Choice: String, CaseIterable {
-        case pierre = "rock"
-        case feuille = "paper"
-        case ciseaux = "scisor"
+        case pierre = "pierre"
+        case feuille = "papier"
+        case ciseaux = "ciseaux"
     }
 
     @Published var userChoice: Choice?
