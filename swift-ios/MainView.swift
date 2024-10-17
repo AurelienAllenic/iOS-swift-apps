@@ -13,61 +13,67 @@ struct MainView: View {
                     .aspectRatio(contentMode: .fill)
                     .ignoresSafeArea()
                     .opacity(0.5)
+                Color.black.opacity(0.4)
+                    .ignoresSafeArea()
+                    .overlay(
+                        VStack(alignment: .leading) {
+                            if !viewModel.isValid {
+                                VStack {
+                                    Text("Login")
+                                        .foregroundColor(.white)
+                                        .font(.title.weight(.bold))
 
-                VStack(alignment: .leading) {
-                    if !viewModel.isValid {
-                        VStack {
-                            Text("Login")
-                                .foregroundColor(.black)
-                                .font(.title.weight(.bold))
+                                    TextField("Login", text: $login)
+                                        .padding()
+                                        .frame(width: 246, height: 44)
+                                        .background(.white)
+                                        .cornerRadius(3)
+                                        .autocapitalization(.none)
+                                        .padding(.bottom, 10)
 
-                            TextField("Login", text: $login)
-                                .frame(width: 246, height: 44)
-                                .background(.white)
-                                .cornerRadius(3)
-                                .padding(.bottom, 0)
-                                .autocapitalization(.none)
+                                    SecureField("Password", text: $password)
+                                        .padding()
+                                        .frame(width: 246, height: 44)
+                                        .background(.white)
+                                        .cornerRadius(3)
+                                        .padding(.bottom, 20)
 
-                            SecureField("Password", text: $password)
-                                .frame(width: 246, height: 44)
-                                .background(.white)
-                                .cornerRadius(3)
-                                .padding(.bottom, 10)
-
-                            Button {
-                                viewModel.checkConnection(login: login, password: password)
-                            } label: {
-                                Text("Submit")
-                                    .padding(10)
-                                    .background(Color.black)
+                                    Button {
+                                        viewModel.checkConnection(login: login, password: password)
+                                    } label: {
+                                        Text("Submit")
+                                            .padding(10)
+                                            .background(Color.black)
+                                            .foregroundColor(.white)
+                                            .cornerRadius(8)
+                                            .font(.title2)
+                                            .frame(maxWidth: .infinity, maxHeight: 50)
+                                    }
+                                }
+                                .padding()
+                            } else {
+                                Text("Connecté !")
+                                    .font(.title)
                                     .foregroundColor(.white)
-                                    .cornerRadius(8)
-                                    .font(.title2)
-                                    .frame(maxWidth: .infinity, maxHeight: 100)
+                                    .frame(width: 500, height: 100, alignment: .center)
+                                    .background(Color.black.opacity(0.4))
+
+                                NavigationLink(destination: MenuAppsView()) {
+                                    Text("Menu")
+                                        .padding()
+                                        .background(.black)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(8)
+                                        .frame(width: 500, height: 100, alignment: .center)
+                                        .font(.title2.weight(.semibold))
+                                }
+                                .padding(.top)
                             }
                         }
                         .padding()
-                    } else {
-                        Text("Connecté !")
-                            .font(.title)
-                            .foregroundColor(.white)
-                            .frame(width: 500, height: 100, alignment: .center)
-                            .background(Color.black.opacity(0.4))
-
-                        NavigationLink(destination: MenuAppsView()) {
-                            Text("Menu")
-                                .padding()
-                                .background(.black)
-                                .foregroundColor(.white)
-                                .cornerRadius(8)
-                                .frame(width: 500, height: 100, alignment: .center)
-                        }
-                        .padding(.top)
-                    }
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    )
             }
-            .onAppear{
+            .onAppear {
                 viewModel.isValid = false
             }
         }

@@ -17,6 +17,9 @@
 		F2B26FD12CC0014300DAA3D3 /* JackpotMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B26FD02CC0014300DAA3D3 /* JackpotMachine.swift */; };
 		F2B26FD32CC0045900DAA3D3 /* PaperScisors.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B26FD22CC0045900DAA3D3 /* PaperScisors.swift */; };
 		F2B26FD52CC005F100DAA3D3 /* GuessNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B26FD42CC005F100DAA3D3 /* GuessNumber.swift */; };
+		F2E0A6472CC13E2D005785E9 /* PaperScisorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E0A6462CC13E2D005785E9 /* PaperScisorsModel.swift */; };
+		F2E0A6492CC13F2C005785E9 /* JackpotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E0A6482CC13F2C005785E9 /* JackpotModel.swift */; };
+		F2E0A64B2CC13FA3005785E9 /* GuessNumberModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E0A64A2CC13FA3005785E9 /* GuessNumberModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +34,9 @@
 		F2B26FD02CC0014300DAA3D3 /* JackpotMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JackpotMachine.swift; sourceTree = "<group>"; };
 		F2B26FD22CC0045900DAA3D3 /* PaperScisors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperScisors.swift; sourceTree = "<group>"; };
 		F2B26FD42CC005F100DAA3D3 /* GuessNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessNumber.swift; sourceTree = "<group>"; };
+		F2E0A6462CC13E2D005785E9 /* PaperScisorsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaperScisorsModel.swift; sourceTree = "<group>"; };
+		F2E0A6482CC13F2C005785E9 /* JackpotModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JackpotModel.swift; sourceTree = "<group>"; };
+		F2E0A64A2CC13FA3005785E9 /* GuessNumberModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessNumberModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +73,10 @@
 				F2B26FC82CC000B300DAA3D3 /* MainView.swift */,
 				F2B26FCE2CC0011A00DAA3D3 /* MenuAppsView.swift */,
 				F2B26FD02CC0014300DAA3D3 /* JackpotMachine.swift */,
+				F2E0A6482CC13F2C005785E9 /* JackpotModel.swift */,
 				F2B26FD42CC005F100DAA3D3 /* GuessNumber.swift */,
+				F2E0A64A2CC13FA3005785E9 /* GuessNumberModel.swift */,
+				F2E0A6462CC13E2D005785E9 /* PaperScisorsModel.swift */,
 				F2B26FD22CC0045900DAA3D3 /* PaperScisors.swift */,
 				F2B26FCC2CC000ED00DAA3D3 /* DataController.swift */,
 				F2B26FCA2CC000D400DAA3D3 /* MainViewModel.swift */,
@@ -155,13 +164,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2E0A64B2CC13FA3005785E9 /* GuessNumberModel.swift in Sources */,
 				F2B26FCF2CC0011A00DAA3D3 /* MenuAppsView.swift in Sources */,
 				F2B26FCD2CC000ED00DAA3D3 /* DataController.swift in Sources */,
+				F2E0A6492CC13F2C005785E9 /* JackpotModel.swift in Sources */,
 				F2B26FD32CC0045900DAA3D3 /* PaperScisors.swift in Sources */,
 				F2B26FC92CC000B300DAA3D3 /* MainView.swift in Sources */,
 				F2B26FD52CC005F100DAA3D3 /* GuessNumber.swift in Sources */,
 				F2B26FBB2CBFFFB400DAA3D3 /* swift_iosApp.swift in Sources */,
 				F2B26FD12CC0014300DAA3D3 /* JackpotMachine.swift in Sources */,
+				F2E0A6472CC13E2D005785E9 /* PaperScisorsModel.swift in Sources */,
 				F2B26FCB2CC000D400DAA3D3 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,49 +1,8 @@
 import SwiftUI
 
 struct PaperScissors: View {
+    @StateObject private var viewModel = PaperScissorsViewModel()
 
-    enum Choice: String, CaseIterable {
-        case pierre = "rock"
-        case feuille = "paper"
-        case ciseaux = "scisor"
-    }
-
-    @State private var userChoice: Choice?
-    @State private var computerChoice: Choice?
-    @State private var result: String = ""
-    @State private var victories: Int = 0
-    @State private var defeats: Int = 0
-    @State private var isGamePaused: Bool = false
-
-    func determineWinner() {
-        guard let userChoice = userChoice, let computerChoice = computerChoice else { return }
-        
-        if userChoice == computerChoice {
-            result = "Égalité !"
-        } else if (userChoice == .pierre && computerChoice == .ciseaux) ||
-                  (userChoice == .feuille && computerChoice == .pierre) ||
-                  (userChoice == .ciseaux && computerChoice == .feuille) {
-            result = "Tu as gagné !"
-            victories += 1 // Incrémente les victoires
-        } else {
-            result = "Tu as perdu !"
-            defeats += 1 // Incrémente les défaites
-        }
-        
-        isGamePaused = true // Met le jeu en pause
-    }
-    
-    func computerPlay() {
-        computerChoice = Choice.allCases.randomElement()
-    }
-    
-    func resetGame() {
-        userChoice = nil
-        computerChoice = nil
-        result = ""
-        isGamePaused = false // Réactive le jeu
-    }
-    
     var body: some View {
         ZStack {
             Image("paperScisors")
@@ -59,25 +18,32 @@ struct PaperScissors: View {
                     .foregroundColor(.white)
 
                 HStack {
-                    ForEach(Choice.allCases, id: \.self) { choice in
-                        Button(action: {
-                            if !isGamePaused { // Vérifie si le jeu n'est pas en pause
-                                userChoice = choice
-                                computerPlay()
-                                determineWinner()
+                    ForEach(PaperScissorsViewModel.Choice.allCases, id: \.self) { choice in
+                        VStack {
+                            Button(action: {
+                                if !viewModel.isGamePaused {
+                                    viewModel.userChoice = choice
+                                    viewModel.computerPlay()
+                                    viewModel.determineWinner()
+                                }
+                            }) {
+                                Image(choice.rawValue)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 110, height: 100)
+                                    .cornerRadius(15)
                             }
-                        }) {
-                            Image(choice.rawValue)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 110, height: 100)
+
+                            Text(choice.rawValue.capitalized)
+                                .foregroundColor(.white)
+                                .font(.title3)
                         }
                         .cornerRadius(10)
-                        .disabled(isGamePaused) // Désactive les boutons si le jeu est en pause
+                        .disabled(viewModel.isGamePaused)
                     }
                 }
 
-                if let userChoice = userChoice, let computerChoice = computerChoice {
+                if let userChoice = viewModel.userChoice, let computerChoice = viewModel.computerChoice {
                     VStack {
                         Text("Ton choix : \(userChoice.rawValue.capitalized)")
                         Text("Choix de l'ordinateur : \(computerChoice.rawValue.capitalized)")
@@ -87,23 +53,25 @@ struct PaperScissors: View {
                     .font(.title2.weight(.semibold))
                 }
 
-                Text(result)
+                Text(viewModel.result)
                     .padding()
                     .foregroundColor(.white)
                     .font(.largeTitle.weight(.bold))
-                HStack{
-                    Text("Victoires : \(victories)")
+                
+                HStack {
+                    Text("Victoires : \(viewModel.victories)")
                         .foregroundColor(.white)
                         .font(.title)
                         .padding()
-                    Text("Défaites : \(defeats)")
+                    Text("Défaites : \(viewModel.defeats)")
                         .foregroundColor(.white)
                         .font(.title)
                         .padding()
                 }
-                if !result.isEmpty {
+
+                if !viewModel.result.isEmpty {
                     Button("Relancer la partie") {
-                        resetGame()
+                        viewModel.resetGame()
                     }
                     .padding()
                     .background(Color.black)
