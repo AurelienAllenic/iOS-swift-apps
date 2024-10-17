@@ -9,7 +9,6 @@ struct GuessNumber: View {
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .ignoresSafeArea()
-                .opacity(0.6)
 
             VStack(spacing: 20) {
                 Text("Devine le nombre")
@@ -27,10 +26,10 @@ struct GuessNumber: View {
                 .background(Color.white.opacity(0.5))
                 .cornerRadius(10)
                 .frame(width: 300, height: 50)
-                .onChange(of: viewModel.selectedDifficulty) { _ in
+                .onChange(of: viewModel.selectedDifficulty) {
                     viewModel.resetGame()
                 }
-                
+
                 TextField("Entre ton nombre", text: $viewModel.userGuess)
                     .keyboardType(.numberPad)
                     .textFieldStyle(RoundedBorderTextFieldStyle())

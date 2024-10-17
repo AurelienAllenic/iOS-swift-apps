@@ -9,7 +9,6 @@ struct JackpotMachine: View {
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .ignoresSafeArea()
-                .opacity(0.6)
 
             VStack {
                 Text("Jackpot Machine")

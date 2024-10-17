@@ -10,6 +10,7 @@ struct MenuAppsView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .ignoresSafeArea()
+                    .opacity(0.7)
                 
                 Color.black.opacity(0.4)
                     .ignoresSafeArea()
@@ -19,7 +20,7 @@ struct MenuAppsView: View {
                                 .font(.title.weight(.bold))
                                 .foregroundColor(.white)
                                 .multilineTextAlignment(.center)
-                                .padding(50)
+                                .padding(25)
 
                             NavigationLink(destination: JackpotMachine()) {
                                 ZStack {
@@ -79,7 +80,28 @@ struct MenuAppsView: View {
                                 }
                             }
                             .frame(height: 100)
+                            
+                            NavigationLink(destination: TicTacToeView()) {
+                                ZStack {
+                                    Image("tictactoe")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .frame(width: 300, height: 100)
+                                        .cornerRadius(10)
+
+                                    Color.black.opacity(0.4)
+                                        .cornerRadius(10)
+                                        .frame(width: 300, height: 100)
+
+                                    Text("Tic Tac Toe")
+                                        .padding(20)
+                                        .foregroundColor(.white)
+                                        .font(.title.weight(.semibold))
+                                }
+                            }
+                            .frame(height: 100)
                         }
+                        
                         .padding()
                     )
             }

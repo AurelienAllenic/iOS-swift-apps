@@ -9,7 +9,6 @@ struct PaperScissors: View {
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .ignoresSafeArea()
-                .opacity(0.6)
 
             VStack(spacing: 20) {
                 Text("Pierre, Feuille, Ciseaux")
